@@ -24,6 +24,6 @@ int	main(int argc, char **argv)
 	if (n == 0)
 		n = 1000;
 	result = sum_multiples_3_or_5(n);
-	printf("%d\n", result);
+	printf("%u\n", result);
 	return (0);
 }
