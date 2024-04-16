@@ -1,14 +1,4 @@
-import { createInterface } from 'node:readline/promises';
-
-async function askNumber() {
-	const readline = createInterface({
-		input: process.stdin,
-		output: process.stdout
-	});
-	const input:string = await readline.question("Input number: ");
-	readline.close();
-	return (input);
-}
+import { argv } from 'node:process';
 
 function sum_multiples_3_or_5(n:number) {
 	let sum:number = 0;
@@ -19,10 +9,15 @@ function sum_multiples_3_or_5(n:number) {
 	return (sum);
 }
 
-async function main() {
-	let n:number = parseInt(await askNumber());
+function main() {
+	let n:number = 0;
+	if (argv.length > 2)
+		n = parseInt(argv[2]);
+	if (n === 0)
+		n = 1_000;
 	let result:number = sum_multiples_3_or_5(n);
 	console.log(result);
 }
 
-main();
+if (require.main === module)
+	main();
